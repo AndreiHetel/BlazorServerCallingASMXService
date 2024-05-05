@@ -1,0 +1,19 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://www.dneonline.com/calculator.asmx"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, WSCalculator"
+    ],
+    "references": [
+      "Microsoft.AspNetCore.Components.WebAssembly.Server, {Microsoft.AspNetCore.Components.WebAssembly.Server, 8.0.4}"
+    ],
+    "targetFramework": "net8.0",
+    "typeReuseMode": "All"
+  }
+}
