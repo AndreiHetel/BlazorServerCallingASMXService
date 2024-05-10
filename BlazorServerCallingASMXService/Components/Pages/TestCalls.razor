@@ -1,0 +1,48 @@
+﻿@page "/test"
+@using BlazorServerCallingASMXService.Helpers
+@rendermode InteractiveServer
+
+<PageTitle>Test ASPX API calls</PageTitle>
+
+<h3>Test Calls</h3>
+
+
+<div class="row alert alert-light">
+
+	<div class="col-4">
+		<label for="ANumber">A:</label>
+		<InputNumber id="ANumber" @bind-Value=a />
+	</div>
+	<div class="col-4">
+		<label for="BNumber">B:</label>
+		<InputNumber id="BNumber" @bind-Value=b />
+	</div>
+
+	<div class="col-4">
+		<button class="btn btn-primary round" @onclick="AddNumbers">Add</button>
+	</div>
+	
+	<div class="col-12 text-dark font-bold">
+		<p>
+			Result is: @addResult
+		</p>
+	</div>
+</div>
+
+@code {
+    private int a;
+    private int b;
+    int addResult; 
+
+    APIHelper? api;
+
+    protected override void OnInitialized() => api = new("http://www.dneonline.com/calculator.asmx");
+
+	private async Task AddNumbers()
+	{
+		if (api is null) { api = new("http://www.dneonline.com/calculator.asmx"); }
+		addResult = await api.AddNumbers(a, b);
+		StateHasChanged();
+	}
+}
+
